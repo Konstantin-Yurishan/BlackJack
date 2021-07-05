@@ -1,5 +1,5 @@
 #pragma once
-class Ñroupier
+class Croupier
 {
 };
 

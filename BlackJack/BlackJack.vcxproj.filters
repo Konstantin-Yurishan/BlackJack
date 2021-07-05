@@ -21,7 +21,7 @@
     <ClCompile Include="Player.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Сroupier.cpp">
+    <ClCompile Include="Croupier.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Deck.cpp">
@@ -41,7 +41,7 @@
     <ClInclude Include="Player.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Сroupier.h">
+    <ClInclude Include="Croupier.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Deck.h">

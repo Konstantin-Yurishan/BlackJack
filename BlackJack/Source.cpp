@@ -11,14 +11,23 @@ int main() {
 
 	srand(time(NULL));
 
-	Player player;
+	Player player1;
 
-	player.addCard();
-	player.addCard();
-	player.addCard();
-	player.addCard();
+	player1.addCard();
+	player1.addCard();
+	player1.addCard();
+	player1.addCard();
 
-	player.printAllCards();
+	player1.printAllCards(0);
+
+	Player player2;
+
+	player2.addCard();
+	player2.addCard();
+	player2.addCard();
+	player2.addCard();
+
+	player2.printAllCards(1);
 	
 
 

@@ -2,6 +2,7 @@
 #include "Card.h"
 #include <vector>
 #include <iostream>
+#include <Windows.h>
 
 
 class Player
@@ -9,8 +10,9 @@ class Player
 private:
 
 	std::vector<Card> deck;
-	int sum = 0; //хранит общее значение карт
+	int sum = 0; 
 	int cards_number = 0;
+	int cash;
 
 public:
 
@@ -34,15 +36,14 @@ public:
 		return deck.at(index);
 	}
 
-	void printAllCards() {
+	void printAllCards(int player_num) {
 
 		for (int i = 0; i < cards_number; i++) {
-			deck.at(i).printCard();
-			std::cout << "/************************/" << std::endl;
+			deck.at(i).printCard(i, player_num);
 			std::cout << deck.at(i).getValue() << std::endl;
 		}
 
-		std::cout << "Сумма всех карт равна : " << sum << std::endl;
+		std::cout << "Summ : " << sum << std::endl;
 	}
 
 

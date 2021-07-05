@@ -1,167 +1,105 @@
 #pragma once
 #include <string>
 #include <iostream>
-
+#include <vector>
+#include <Windows.h>
 
 class Card
 {
 private:
 
-	int number = 0;
-	std::string card[10][10];
-	int value = 0;
-
+	std::vector<std::string> card;
+	int number;
+	int value;
 
 public:
 
-	Card() = default;
+	Card() : number{ 0 }, value{ 0 }{
+		card.push_back(" _____ ");
+		card.push_back("|     |");
+		card.push_back("|     |");
+		card.push_back("|     |");
+		card.push_back("|     |");
+		card.push_back("|_____|");
+	}
 
 	void makeCard(int number) {
 
 		this->number = number;
 
-		for (int i = 0; i < 10; i++) {
-			for (int c = 0; c < 10; c++) {
-				card[i][c] = "'";
-			}
-		}
-
-		//spade
+		// spades
 		if (number >= 1 && number <= 13) {
-
-			card[4][4] = "S";
-
-			if (number >= 1 && number <= 9) {
-				card[0][0] = std::to_string(number + 1);
-				card[9][9] = std::to_string(number + 1);
-				value = number + 1;
-			}
-
-			if (number == 10) {
-				card[0][0] = "J";
-				card[9][9] = "J";
-				value = 10;
-			}
-
-			if (number == 11) {
-				card[0][0] = "Q";
-				card[9][9] = "Q";
-				value = 10;
-			}
-
-			if (number == 12) {
-				card[0][0] = "K";
-				card[9][9] = "K";
-				value = 10;
-			}
-
-			if (number == 13) {
-				card[0][0] = "A";
-				card[9][9] = "A";
-				value = 10;
-			}
+			card[1] = "|  .  |";
+			card[2] = "| /.\\ |";
+			card[3] = "|(_._)|";
+			card[4] = "|  |  |";
+		} // diamonds
+		else if (number >= 14 && number <= 26) {
+			card[1] = "|  ^  |";
+			card[2] = "| / \\ |";
+			card[3] = "| \\ / |";
+			card[4] = "|  .  |";
+		} // hearts
+		else if (number >= 27 && number <= 39) {
+			card[1] = "| _ _ |";
+			card[2] = "|( v )|";
+			card[3] = "| \\ / |";
+			card[4] = "|  .  |";
+		} // clubs
+		else if (number >= 40 && number <= 52) {
+			card[1] = "|  _  |";
+			card[2] = "| ( ) |";
+			card[3] = "|(_'_)|";
+			card[4] = "|  |  |";
 		}
 
-		//heart
-		if (number >= 14 && number <= 26) {
-
-			card[4][4] = "H";
-
-			if (number >= 1 && number <= 9) {
-				card[0][0] = number + 1;
-				card[9][9] = number + 1;
+		if (number % 13 < 10) {
+			if (number % 13 == 9) {
+				card[1].replace(1, 1, "1");
+				card[1].replace(2, 1, "0");
+				card[5].replace(4, 1, "1");
+				card[5].replace(5, 1, "0");
 			}
-
-			if (number == 10) {
-				card[0][0] = "J";
-				card[9][9] = "J";
+			else {
+				card[1].replace(1, 1, std::to_string(number % 13 + 1));
+				card[5].replace(5, 1, std::to_string(number % 13 + 1));
 			}
-
-			if (number == 11) {
-				card[0][0] = "Q";
-				card[9][9] = "Q";
-			}
-
-			if (number == 12) {
-				card[0][0] = "K";
-				card[9][9] = "K";
-			}
-
-			if (number == 13) {
-				card[0][0] = "A";
-				card[9][9] = "A";
-			}
+			value = number % 13 + 1;
 		}
 
-		//club
-		if (number >= 27 && number <= 39) {
-
-			card[4][4] = "S";
-
-			if (number >= 1 && number <= 9) {
-				card[0][0] = number + 1;
-				card[9][9] = number + 1;
-			}
-
-			if (number == 10) {
-				card[0][0] = "J";
-				card[9][9] = "J";
-			}
-
-			if (number == 11) {
-				card[0][0] = "Q";
-				card[9][9] = "Q";
-			}
-
-			if (number == 12) {
-				card[0][0] = "K";
-				card[9][9] = "K";
-			}
-
-			if (number == 13) {
-				card[0][0] = "A";
-				card[9][9] = "A";
-			}
+		if (number % 13 == 10) {
+			card[1].replace(1, 1, "J");
+			card[5].replace(5, 1, "J");
+			value = 10;
+		}
+		else if (number % 13 == 11) {
+			card[1].replace(1, 1, "Q");
+			card[5].replace(5, 1, "Q");
+			value = 10;
+		}
+		else if (number % 13 == 12) {
+			card[1].replace(1, 1, "K");
+			card[5].replace(5, 1, "K");
+			value = 10;
+		}
+		else if (number % 13 == 0) {
+			card[1].replace(1, 1, "A");
+			card[5].replace(5, 1, "A");
+			value = 11;
 		}
 
-		//diamond
-		if (number >= 40 && number <= 52) {
 
-			card[4][4] = "S";
-
-			if (number >= 1 && number <= 9) {
-				card[0][0] = number + 1;
-				card[9][9] = number + 1;
-			}
-
-			if (number == 10) {
-				card[0][0] = "J";
-				card[9][9] = "J";
-			}
-
-			if (number == 11) {
-				card[0][0] = "Q";
-				card[9][9] = "Q";
-			}
-
-			if (number == 12) {
-				card[0][0] = "K";
-				card[9][9] = "K";
-			}
-
-			if (number == 13) {
-				card[0][0] = "A";
-				card[9][9] = "A";
-			}
-		}
 	}
 
-	void printCard() {
-		for (int i = 0; i < 10; i++) {
-			for (int c = 0; c < 10; c++) {
-				std::cout << card[i][c];
-			}
-			std::cout << std::endl;
+	void printCard(int numberOfCard, int player_num) {
+		COORD coord;
+		coord.X = numberOfCard * 10;
+		coord.Y = 5 +(player_num * 10);
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+		for (int i = 0; i < 6; i++) {
+			std::cout << card[i];
+			coord.Y += 1;
+			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 		}
 	}
 
