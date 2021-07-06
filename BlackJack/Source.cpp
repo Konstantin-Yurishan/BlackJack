@@ -1,32 +1,16 @@
 #include <iostream>
 #include "Card.h"
 #include "Player.h"
-
-
-
-
+#include "Game.h"
 
 
 int main() {
 
+	std::setlocale(LC_ALL, "Russian");
+
 	srand(time(NULL));
 
-	Player player1;
-
-	player1.addCard();
-	player1.addCard();
-
-	player1.printAllCards(0);
-
-	Player player2;
-
-	player2.addCard();
-	player2.addCard();
-
-	player2.printAllCards(1);
-	
-
-
+	Game game;
 
 	return 0;
 }

@@ -12,22 +12,17 @@ private:
 	std::vector<Card> deck;
 	int sum = 0; 
 	int cards_number = 0;
-	int cash;
+	int cash = 100;
 
 public:
 
 	Player() = default;
 
 	void addCard() {
-
 		int num = rand() % (53 - 1) + 1;
-
 		Card card;
-
 		card.makeCard(num);
-
 		deck.push_back(card);
-
 		sum += card.getValue();
 		cards_number++;
 	}
@@ -50,7 +45,20 @@ public:
 		}
 
 		std::cout << "Summ : " << sum << std::endl;
+		std::cout << "Cash: " << cash;
 	}
+
+	int getSum() {
+		return sum;
+	}
+
+	int getCardsNumber() {
+		return cards_number;
+	}
+
+
+
+
 
 
 	

@@ -87,8 +87,6 @@ public:
 			card[5].replace(5, 1, "A");
 			value = 11;
 		}
-
-
 	}
 
 	void printCard(int numberOfCard, int player_num) {
@@ -98,6 +96,21 @@ public:
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 		for (int i = 0; i < 6; i++) {
 			std::cout << card[i];
+			coord.Y += 1;
+			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+		}
+
+		
+
+	}
+
+	void printShirtCard() {
+		COORD coord;
+		coord.X = 10;
+		coord.Y = 5;
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+		for (int i = 0; i < 6; i++) {
+			std::cout << ".......";
 			coord.Y += 1;
 			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 		}
