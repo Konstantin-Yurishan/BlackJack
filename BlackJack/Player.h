@@ -43,6 +43,12 @@ public:
 			std::cout << deck.at(i).getValue() << std::endl;
 		}
 
+		for (Card a : deck) {
+			if (a.getValue() == 11 && sum > 21) {
+				sum -= 10;
+			}
+		}
+
 		std::cout << "Summ : " << sum << std::endl;
 	}
 

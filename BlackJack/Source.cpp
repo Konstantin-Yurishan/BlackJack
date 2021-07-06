@@ -15,15 +15,11 @@ int main() {
 
 	player1.addCard();
 	player1.addCard();
-	player1.addCard();
-	player1.addCard();
 
 	player1.printAllCards(0);
 
 	Player player2;
 
-	player2.addCard();
-	player2.addCard();
 	player2.addCard();
 	player2.addCard();
 
