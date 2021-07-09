@@ -1,7 +1,5 @@
 #include <iostream>
-#include "Card.h"
-#include "Player.h"
-#include "Game.h"
+#include "Table.h"
 
 
 int main() {
@@ -10,7 +8,9 @@ int main() {
 
 	srand(time(NULL));
 
-	Game game;
+	Table table;
+
+	table.game();
 
 	return 0;
 }
